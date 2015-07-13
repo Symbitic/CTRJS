@@ -1,0 +1,3 @@
+# Exclude the main.c interpreter.
+main.c
+

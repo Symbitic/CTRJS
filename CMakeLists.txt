@@ -24,7 +24,6 @@ set(CMAKE_BUILD_TYPE_INIT "Debug")
 
 project(CTRJS)
 
-# Project version
 set(CTRJS_VERSION 0.1.0)
 
 find_package(OpenCTR CONFIG REQUIRED)
@@ -32,13 +31,13 @@ find_package(libctr CONFIG REQUIRED)
 
 option(ENABLE_DOC "Enable documentation" OFF)
 
-add_subdirectory(data)
-
 if(ENABLE_DOC)
 	add_subdirectory(doc)
 endif()
 
-# Include CMAKE_CURRENT_BINARY_DIR in header include dirs.
+add_subdirectory(data)
+add_subdirectory(external)
+
 set(CMAKE_INCLUDE_CURRENT_DIR TRUE)
 
 include_directories(
@@ -51,6 +50,7 @@ add_executable(ctrjs
 
 target_link_libraries(ctrjs
 	CTR::CTR
+	mujs
 )
 
 ctr_convert_binary(ctrjs)
