@@ -1,0 +1,77 @@
+# CMake build directory
+build/
+
+# CPack output directory
+dist/
+
+# CMake cache files
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+
+# Output formats
+*.exe
+*.dll
+*.dylib
+*.so
+*.a
+*.msi
+*.dmg
+*.pkg
+*.deb
+*.rpm
+*.tgz
+*.tar.gz
+*.tbz2
+*.tar.bz2
+*.zip
+*.app
+
+# CMake generators
+.project
+.cproject
+*.vcproj.*.*.user
+*.xcodeproj/
+build.ninja
+rules.ninja
+CMakeScripts/
+*.cbp
+*.project
+*.workspace
+*.kdevelop
+*.kdevelop.filelist
+*.kdevelop*
+*.kdevses
+*.kateproject
+.kateproject
+*.sublime-project
+*.sln
+*.vcproj.*.user
+*.vcxproj.user
+*.obj
+*.log
+obj/
+*.opensdf
+*.sdf
+*.suo
+*.dir
+*.vcxproj*
+Win32
+x64
+cmake_uninstall.cmake
+
+# Apple metadata
+.DS_Store
+
+# Windows metadata
+*.db
+Desktop.ini
+
+# Linux metadata
+.directory
+
+# Temporary data
+tmp/
+
