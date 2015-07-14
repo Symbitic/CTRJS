@@ -31,34 +31,32 @@ Features
 * Nintendo 3DS specific modules, for easier porting and writing.
 * Garbage collection.
 * Asynchronous language and APIs reflect the nature inherent to modern video
-game programming and to ARM programming in general.
+  game programming and to ARM programming in general.
 * Efficiency: Because of the languages' considerable popularity, JavaScript
-engines are highly-opimized. CTRJS gains even more performance because it
-sits closer to the hardware than do JavaScript engines running on a desktop.
+  engines are highly-opimized. CTRJS gains even more performance because it
+  sits closer to the hardware than do JavaScript engines running on a desktop.
 * Portability: Excluding unfinished ports like the filesystem and networking,
-it should be relatively straightforward to port existing JavaScript to run on
-CTRJS.
+  it should be relatively straightforward to port existing JavaScript to run on
+  CTRJS.
 * Quicker deployment, by offering a high-level language which can be written
-on the host (PC) or target (Nintendo 3DS). 
+  on the host (PC) or target (Nintendo 3DS).
 * Modularity: Unlike most scripting languages, JavaScript has good support for
-organizing code into modules. A module in JavaScript can be as simple as a
-file in the same directory (e.x. ``main.js`` includes ``print.js``), or it be an
-externally developed library imported from a package manager (e.x. writing a
-Node.js app that uses ExpressJS installed using NPM).
-* Plug-n-Play mindset: Just get CTRJS running, and your app will start running
-without needing any unnecessary extra effort.
+  organizing code into modules. A module in JavaScript can be as simple as a
+  file in the same directory (e.x. ``main.js`` includes ``print.js``), or it
+  can be an externally developed library imported from a package manager (e.x.
+  writing a Node.js app that uses ExpressJS installed using NPM).
 * Following Semantic Versioning, CTRJS offers a promise of compatibility. By
-offering a means for apps and libraries to declare which version of CTRJS they
-were written to run on, any existing code can continue to run when new versions
-are released, as long as the required versions can be found.
+  offering a means for apps and libraries to declare which version of CTRJS they
+  were written to run on, any existing code can continue to run when new
+  versions are released, as long as the required versions can be found.
 * JavaScript is *the* programming language of the web, and not without reason.
-It's syntax is very extensible and expressive. By given programmers the power
-to write whatever they want, however they want, JavaScript has helped make
-programming fun for a large number of people. Adding even greater value to this
-benefit is the fact that Nintendo has chosen to make their console as closed-
-nature as possible, even as it results in a critical lack of developer
-resources. Offering a "platform of fun" on a platform which has only a very
-limited offering of fun does have its advantages.
+  It's syntax is very extensible and expressive. By given programmers the power
+  to write whatever they want, however they want, JavaScript has helped make
+  programming fun for a large number of people. Adding even greater value to
+  this benefit is the fact that Nintendo has chosen to make their console as
+  closed-nature as possible, even as it results in a critical lack of developer
+  resources. Offering a "platform of fun" on a platform which has only a very
+  limited offering of fun does have its advantages.
 
 Installing
 ----------
