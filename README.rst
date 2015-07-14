@@ -63,8 +63,8 @@ Installing
 
 CTRJS is not currently stable, and should not be considered production-ready.
 When the stable version is released, pre-compiled packages will be available for
-downloading. Until then, CTRJS must be built from source. See :ref:`Building`
-for more details.
+downloading. Until then, CTRJS must be built from source. See `Building`_
+for instructions on building CTRJS from source.
 
 Building
 --------
