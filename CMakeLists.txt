@@ -28,6 +28,7 @@ set(CTRJS_VERSION 0.1.0)
 
 find_package(OpenCTR CONFIG REQUIRED)
 find_package(libctr CONFIG REQUIRED)
+find_library(MATH_LIBRARY m)
 
 option(ENABLE_DOC "Enable documentation" OFF)
 
@@ -44,12 +45,21 @@ include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
+# TODO: Add to GCC Patches and/or OpenCTR CMake.
+add_definitions(-D__CTR__)
+add_definitions(-DDUK_USE_PACKED_TVAL)
+add_definitions(-fstrict-aliasing -fomit-frame-pointer)
+add_definitions(-DNS_DISABLE_NETWORK -DNS_DISABLE_THREAD -DV7_BUILD_PROFILE=1)
+
 add_executable(ctrjs
 	src/main.c
+	src/duktape.c
+	src/v7.c
 )
 
 target_link_libraries(ctrjs
 	CTR::CTR
+	${MATH_LIBRARY}
 	mujs
 )
 

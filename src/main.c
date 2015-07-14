@@ -21,64 +21,55 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <errno.h>
 
 #include "ctr/sys.h"
 #include "ctr/fs.h"
 #include "ctr/gsp.h"
 
-#include "mujs.h"
+#include <sys/iosupport.h>
 
-static void js_print(js_State* J) {
-	char buffer[255];
-	uint32_t i;
-	uint32_t top = 0;
-	uint32_t size = 0;
+#include "v7.h"
 
-	top = js_gettop(J);
-
-	for(i=1; i<top; i++) {
-		const char* s = js_tostring(J, i);
-		if(i > 1) {
-			strncpy(buffer + size, " ", 1);
-			size++;
-		}
-		const uint32_t len = strlen(s);
-		strncpy(buffer + size, s, len);
-		size += len;
-	}
-
-	sys_debug_printf("JS: %s\n", buffer);
-
-	js_pushundefined(J);
+ssize_t js_write(struct _reent* r, int fd, const char* ptr, size_t len) {
+	sys_debug_printf("JS> %s", ptr);
+	return len;
 }
 
-int main(int argc, char *argv[]) {
-	js_State* J = NULL;
+int main(int argc, char* argv[]) {
+	static const devoptab_t dotab_js = { "js", 0, NULL, NULL, js_write, NULL, NULL, NULL };
 
-	sys_debug_printf("Creating state");
+	devoptab_list[STD_OUT] = &dotab_js;
+	devoptab_list[STD_ERR] = &dotab_js;
 
-	J = js_newstate(NULL, NULL, JS_STRICT);
-	if(J == NULL) {
-		sys_debug_printf("Error creating JavaScript state object.");
-		exit(EXIT_FAILURE);
+	setvbuf(stdout, NULL , _IOLBF, 0);
+	setvbuf(stderr, NULL , _IOLBF, 0);
+
+	printf("Testing\n");
+
+
+	struct v7* v7 = NULL;
+	v7_val_t exec_result;
+	int ret;
+
+	v7 = v7_create();
+	if(v7 == NULL) {
+		sys_debug_printf("v7_create failed: %s\n", v7_get_parser_error(v7));
+		while(1) sys_thread_sleep(UINT64_MAX);
 	}
 
-	sys_debug_printf("Adding \'print\' function");
-
-	js_newcfunction(J, js_print, "print", 1);
-	js_setglobal(J, "print");
-
-	sys_debug_printf("Executing \'print\' function");
-
-	js_dostring(J, "print('hello world');", 0);
-
-	sys_debug_printf("Completed -- entering sleep\n");
-
-	while(1) {
-		sys_thread_sleep(UINT64_MAX);
+	ret = v7_exec(v7, &exec_result, "print(5)");
+	if(ret != 0) {
+		sys_debug_printf("v7_exec error: %d (%s)\n", ret, v7_get_parser_error(v7));
+		while(1) sys_thread_sleep(UINT64_MAX);
 	}
 
-	js_freestate(J);
+	sys_debug_printf("v7_exec returned %d", exec_result);
+
+	while(1) sys_thread_sleep(UINT64_MAX);
+
+	v7_destroy(v7);
 
 	return 0;
 }
+#endif

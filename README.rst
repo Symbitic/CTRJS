@@ -16,11 +16,10 @@ implementation of JavaScript for the Nintendo 3DS, with various extensions and
 features to help bring JavaScript fully into the world of Nintendo 3DS homebrew
 software development.
 
-CTRJS uses `MuJS`_ to bring a full port of JavaScript to the 3DS and
-integrates it with libctr, to provide entirely new platform-specific
-interfaces and to hook the existing JavaScript standard library to use
-libctr for things such as file access and console printing, which would not
-work out-of-the-box on the 3DS.
+CTRJS aims to bring a full port of JavaScript to the Nintendo 3DS, using `V7`_
+as the JavaScript engine, and `libctr`_ for providing platform-specific modules,
+making it easier for developers to create homebrew, without needing to use
+C/C++.
 
 See https://symbitic.github.io/ctrjs/index.html for end-user downloads and
 documentation.
@@ -35,8 +34,10 @@ Features
 game programming and to ARM programming in general.
 * Efficiency: Because of the languages' considerable popularity, JavaScript
 engines are highly-opimized. CTRJS gains even more performance because it
-sits closer to the hardware than do most desktop applications.
-* Portability: Excluding features such as touchscreen and keypads, 
+sits closer to the hardware than do JavaScript engines running on a desktop.
+* Portability: Excluding unfinished ports like the filesystem and networking,
+it should be relatively straightforward to port existing JavaScript to run on
+CTRJS.
 * Quicker deployment, by offering a high-level language which can be written
 on the host (PC) or target (Nintendo 3DS). 
 * Modularity: Unlike most scripting languages, JavaScript has good support for
@@ -108,7 +109,7 @@ See `LICENSE.txt`_ for terms.
 
 .. _CTRJS: https://github.com/Symbitic/CTRJS
 
-.. _MuJS: http://mujs.com/
+.. _V7: https://github.com/cesanta/v7
 
 .. _OpenCTR: https://github.com/OpenCTR/OpenCTR
 
